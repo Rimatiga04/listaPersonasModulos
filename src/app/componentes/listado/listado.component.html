@@ -19,13 +19,13 @@
       </thead>
       <tbody>
         <tr *ngFor="let p of listaPer">
-          <td>{{p.ID}}</td>
-          <td>{{p.DNI}}</td>
-          <td>{{p.NOMBRE}}</td>
-          <td>{{p.APELLIDOS}}</td>
+          <td>{{p.id}}</td>
+          <td>{{p.dni}}</td>
+          <td>{{p.nombre}}</td>
+          <td>{{p.apellidos}}</td>
           <td>
             <button class="btn btn-link">Editar</button>
-            <button class="btn btn-link" (click)="borre(p.ID,p.NOMBRE )">Borrar</button>
+            <button class="btn btn-link" (click)="borre(p.id,p.nombre )">Borrar</button>
           </td>
         </tr>
       </tbody>

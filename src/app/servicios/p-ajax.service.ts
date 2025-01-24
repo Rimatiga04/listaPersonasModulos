@@ -25,7 +25,10 @@ export class PAjaxService {
     return this.http.post<Persona[]>(this.url, cuerpo);
   }
 
-  añadir(id: number, dni: string, nombre: string, apellido: string) {
-    
+  insertar(persona: Persona) {
+    let pa = JSON.parse(JSON.stringify(persona));
+    pa.servicio = "insertar";
+    console.log("pa", pa);
+    return this.http.post<Persona[]>(this.url, JSON.stringify(pa));
   }
 }

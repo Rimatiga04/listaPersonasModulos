@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Persona } from '../../modelos/persona';
+import { PAjaxService } from '../../servicios/p-ajax.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -13,14 +14,9 @@ export class FormPersonaComponent {
   public persona: Persona = <Persona>{};
   public textoBoton: string;
 
-  constructor() {
-    this.persona = {
-      ID: -1,
-      DNI: "",
-      NOMBRE: "",
-      APELLIDOS: ""
-    }
-    this.textoBoton = "AÑADIR";
+  constructor(private peticion: PAjaxService, private ruta: Router) {
+    this.persona.id = -1,
+      this.textoBoton = "AÑADIR";
   }
 
   ngOnInit() {
@@ -28,6 +24,10 @@ export class FormPersonaComponent {
   }
 
   onSubmit() {
+    console.log("This.Persona", this.persona);
+    this.peticion.insertar(this.persona).subscribe(datos => {
+      this.ruta.navigate(["/"]);
+    })
 
   }
 }

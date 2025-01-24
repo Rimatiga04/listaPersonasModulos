@@ -2,33 +2,32 @@
 <div class="container-fluid">
   <p>Añadir nueva persona</p>
 
-  <form class="form-horizontal" #personaForm="ngForm" (ngSubmit)="onSubmit()"><!--personaForm.value-->
+  <form class="form-horizontal" #personaForm="ngForm" (ngSubmit)="onSubmit()">
+    <!--Se puede trabajar tanto con personaForm.value como sin el, en este caso es mas sencillo hacerlo sin pasar el atributo-->
     <div class="mb-3">
       <label>DNI:</label>
-      <input type="text" class="form-control" required [(ngModel)]="persona.DNI" name="dni" #dni="ngModel">
+      <input type="text" class="form-control" required [(ngModel)]="persona.dni" name="dni" #dni="ngModel">
       <div [hidden]="dni.valid || dni.pristine" class="alert alert-danger">
         El DNI es obligatorio
       </div>
     </div>
     <div class="mb-3">
       <label>Nombre:</label>
-      <input type="text" class="form-control" required [(ngModel)]="persona.NOMBRE" name="nombre" #nombre="ngModel">
+      <input type="text" class="form-control" required [(ngModel)]="persona.nombre" name="nombre" #nombre="ngModel">
       <div [hidden]="nombre.valid || nombre.pristine" class="alert alert-danger">
         El Nombre es obligatorio
       </div>
     </div>
     <div class="mb-3">
       <label>Apellidos:</label>
-      <input type="text" class="form-control" required [(ngModel)]="persona.APELLIDOS" name="apellidos"
+      <input type="text" class="form-control" required [(ngModel)]="persona.apellidos" name="apellidos"
         #apellidos="ngModel">
       <div [hidden]="apellidos.valid || apellidos.pristine" class="alert alert-danger">
         Los Apellidos son obligatorios
       </div>
     </div>
-    <button type="submit" class="btn btn-danger">Enviar</button>
+    <button type="submit" class="btn btn-danger" [disabled]="!personaForm.valid">{{textoBoton}}</button>
     <span> | </span>
-    <button type="button" class="btn btn-warning">Cancelar </button>
+    <button type="button" class="btn btn-warning" routerLink="/">Cancelar </button>
   </form>
-  <br>
-  <button type="button" class="btn btn-secondary" routerLink="/">Volver atras</button>
 </div>
