@@ -1,0 +1,34 @@
+<h4>Nueva persona</h4>
+<div class="container-fluid">
+  <p>Añadir nueva persona</p>
+
+  <form class="form-horizontal" #personaForm="ngForm" (ngSubmit)="onSubmit()"><!--personaForm.value-->
+    <div class="mb-3">
+      <label>DNI:</label>
+      <input type="text" class="form-control" required [(ngModel)]="persona.DNI" name="dni" #dni="ngModel">
+      <div [hidden]="dni.valid || dni.pristine" class="alert alert-danger">
+        El DNI es obligatorio
+      </div>
+    </div>
+    <div class="mb-3">
+      <label>Nombre:</label>
+      <input type="text" class="form-control" required [(ngModel)]="persona.NOMBRE" name="nombre" #nombre="ngModel">
+      <div [hidden]="nombre.valid || nombre.pristine" class="alert alert-danger">
+        El Nombre es obligatorio
+      </div>
+    </div>
+    <div class="mb-3">
+      <label>Apellidos:</label>
+      <input type="text" class="form-control" required [(ngModel)]="persona.APELLIDOS" name="apellidos"
+        #apellidos="ngModel">
+      <div [hidden]="apellidos.valid || apellidos.pristine" class="alert alert-danger">
+        Los Apellidos son obligatorios
+      </div>
+    </div>
+    <button type="submit" class="btn btn-danger">Enviar</button>
+    <span> | </span>
+    <button type="button" class="btn btn-warning">Cancelar </button>
+  </form>
+  <br>
+  <button type="button" class="btn btn-secondary" routerLink="/">Volver atras</button>
+</div>
