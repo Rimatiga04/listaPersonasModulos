@@ -31,4 +31,19 @@ export class PAjaxService {
     console.log("pa", pa);
     return this.http.post<Persona[]>(this.url, JSON.stringify(pa));
   }
+
+  selPersonaId(id: number) {
+    let cuerpo = {
+      servicio: "selPersonaID",
+      id: id
+    }
+    return this.http.post<Persona>(this.url, cuerpo);
+  }
+
+  modificar(persona: Persona) {
+    let pa = JSON.parse(JSON.stringify(persona));
+    pa.servicio = "modificar";
+    console.log("pa", pa);
+    return this.http.post<Persona>(this.url, JSON.stringify(pa));
+  }
 }
